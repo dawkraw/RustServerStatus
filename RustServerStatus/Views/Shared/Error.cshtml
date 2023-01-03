@@ -1,0 +1,13 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="pt-12 bg-neutral-800 opacity-75 shadow-lg rounded-md px-8 pt-6 pb-8 mb-4">
+    <h1 class="text-xl md:text-3xl text-red-400 font-bold leading-tight text-center mb-2">There was an error querying the server!</h1>
+    <p class="text-base md:text-xl text-stone-100 text-center mb-2">Make sure to provide a valid server address and try again!</p>
+    @if (Model.ShowRequestId)
+    {
+        <p class="text-base md:text-xl text-stone-100 text-center mb-2">Request ID: @Model.RequestId</p>
+    }
+</div>

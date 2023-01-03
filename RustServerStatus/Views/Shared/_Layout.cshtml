@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - RustServerStatus</title>
+    <link rel="stylesheet" href="~/css/output.css" asp-append-version="true"/>
+    @RenderSection("Headers", false)
+</head>
+<body class="bg-gradient-to-t from-neutral-900 via-neutral-900 to-neutral-800 h-screen w-full relative">
+<img src="~/img/bg.png" class="-z-10 w-full h-full object-cover absolute mix-blend-overlay"/>
+<div>
+    <header class="flex items-center justify-center w-full p-2">
+        <a class="m-auto text-xl font-bold text-center text-stone-200 lg:text-3xl" asp-action="Index">
+            <span class="text-red-600">
+                Rust
+            </span>
+            Server Status
+        </a>
+    </header>
+    <div class="container w-full mx-auto">
+        @RenderBody()
+    </div>
+    <footer class="pt-8 pb-6">
+        <p class="text-center text-sm text-stone-200 text-center font-light">
+            &copy; 2022 - RustServerStatus - 
+            <a href="https://github.com/dawkraw">Dawid Krawczyk</a>
+        </p>
+    </footer>
+</div>
+@await RenderSectionAsync("Scripts", false)
+</body>
+</html>

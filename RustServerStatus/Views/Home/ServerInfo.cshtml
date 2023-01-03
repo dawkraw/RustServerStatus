@@ -1,0 +1,20 @@
+﻿@model ServerInfo
+@{
+    ViewData["Title"] = "Server info";
+}
+
+<div class="pt-12 bg-neutral-800 opacity-75 shadow-lg rounded-md px-8 pt-6 pb-8 mb-4">
+    <h1 class="text-xl md:text-3xl text-stone-100 font-bold leading-tight text-center mb-2">Info for @Model.Address:</h1>
+    <p class="text-base md:text-xl text-stone-100 text-center mb-2">Name: @Model.Name</p>
+    <p class="text-base md:text-xl text-stone-100 text-center mb-2">Game: @Model.Game</p>
+    <p class="text-base md:text-xl text-stone-100 text-center mb-2">Map: @Model.Map</p>
+    <p class="text-base md:text-xl text-stone-100 text-center mb-2">Players: @Model.PlayerCount/@Model.PlayerCapacity</p>
+    <p class="text-base md:text-xl text-stone-100 text-center mb-2">Number of bots: @Model.BotCount</p>
+</div>
+
+@section Headers {
+    <meta property="og:title" content="Server info for @Model.Address"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" content="Name: @Model.Name Game: @Model.Game Players: @Model.PlayerCount/@Model.PlayerCapacity"/>
+    <meta property="og:image" content="https://@Context.Request.Host/serverimage/@Model.Address"/>
+}
