@@ -2,13 +2,13 @@
 
 public class ServerInfo
 {
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
-    public string Map { get; set; }
+    public string? Map { get; set; }
 
-    public string Game { get; set; }
+    public string? Game { get; set; }
 
-    public string Address { get; set; }
+    public string? Address { get; set; }
 
     public byte PlayerCount { get; set; }
 

@@ -30,7 +30,7 @@ public class HomeController : Controller
     [Route("ServerInfo")]
     public async Task<IActionResult> ServerInfo([FromQuery] [Required] string address)
     {
-        if (_cache.TryGetValue(address.ToLowerInvariant(), out ServerInfo serverInfo)) 
+        if (_cache.TryGetValue(address.ToLowerInvariant(), out ServerInfo? serverInfo)) 
             return View(serverInfo);
         
         serverInfo = await _serverQueryService.QueryServerAsync(address);
@@ -47,13 +47,13 @@ public class HomeController : Controller
     [ResponseCache(Duration = 900, Location = ResponseCacheLocation.Any)]
     public async Task<IActionResult> ServerImage([Required] string address)
     {
-        if (_cache.TryGetValue(address.ToLowerInvariant(), out ServerInfo serverInfo))
+        if (_cache.TryGetValue(address.ToLowerInvariant(), out ServerInfo? serverInfo))
             return File(_imageService.GenerateServerInfoImage(serverInfo), "image/png");
-        
+
         serverInfo = await _serverQueryService.QueryServerAsync(address);
         
         if (serverInfo is null) 
-            return PhysicalFile(_environment.WebRootFileProvider.GetFileInfo("img/NotAvailable.png")?.PhysicalPath, "image/png");
+            return PhysicalFile(_environment.WebRootFileProvider.GetFileInfo("img/NotAvailable.png")?.PhysicalPath!, "image/png");
         
         _cache.Add(address.ToLowerInvariant(), serverInfo, TimeSpan.FromMinutes(15));
         
